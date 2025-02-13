@@ -1,27 +1,27 @@
 package ru.job4j.condition;
 
-public class ChessBoard {
+public final class ChessBoard {
+
+    private ChessBoard() {
+        throw new UnsupportedOperationException("Utility class");
+    }
+
     public static int wayBishop(int x1, int y1, int x2, int y2) {
-        int rsl = 0;
-        if (isValid(x1) && isValid(x2)
-                && isValid(y1) && isValid(y2)) {
-            if (Math.abs(x2 - x1) == Math.abs(y2 - y1)) {
-                rsl = Math.abs(x2 - x1);
-            }
+        if (!areCoordinatesValid(x1, y1, x2, y2) || Math.abs(x2 - x1) != Math.abs(y2 - y1)) {
+            return 0;
         }
-        return rsl;
+        return Math.abs(x2 - x1);
     }
 
     public static int wayRook(int x1, int y1, int x2, int y2) {
-        int rsl = 0;
-        if (isValid(x1) && isValid(x2)
-                && isValid(y1) && isValid(y2)) {
-            if (x1 == x2 || y1 == y2) {
-                rsl = Math.abs(x2 - x1);
-                rsl = rsl == 0 ? Math.abs(y2 - y1) : rsl;
-            }
+        if (!areCoordinatesValid(x1, y1, x2, y2) || (x1 != x2 && y1 != y2)) {
+            return 0;
         }
-        return rsl;
+        return Math.max(Math.abs(x2 - x1), Math.abs(y2 - y1));
+    }
+
+    private static boolean areCoordinatesValid(int x1, int y1, int x2, int y2) {
+        return isValid(x1) && isValid(y1) && isValid(x2) && isValid(y2);
     }
 
     private static boolean isValid(int coordinate) {
