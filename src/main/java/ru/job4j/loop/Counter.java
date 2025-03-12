@@ -9,13 +9,13 @@ public class Counter {
         return sum;
     }
 
-    public static void main(String[] args) {
-        System.out.println(sum(0, 10));
-        System.out.println(sum(3, 8));
-        System.out.println(sum(1, 1));
-        System.out.println(sum(5, 1));
-        System.out.println(sum(0, 0));
-        System.out.println(sum(-7, 3));
-        System.out.println(sum(-6, -1));
+    public static int sumByEven(int start, int finish) {
+        int sum = 0;
+        for (int index = start; index <= finish; index++) {
+            if (index % 2 == 0) {
+                sum = sum + index;
+            }
+        }
+        return sum;
     }
 }
