@@ -62,7 +62,7 @@ class SwitchArrayTest {
         int source = 2;
         int destination = 5;
         int[] result = SwitchArray.swap(input, source, destination);
-        int[] expected = {1, 5, 3, 4, 2, 6, 7};
+        int[] expected = {1, 2, 6, 4, 5, 3, 7};
         assertThat(result).containsExactly(expected);
     }
 
