@@ -9,8 +9,8 @@ public class TwoNumberSum {
                 return new int[]{i, j};
             }
             if (j == array.length - 1) {
-                j = i + 1;
                 i++;
+                j = i;
             }
             j++;
         }
